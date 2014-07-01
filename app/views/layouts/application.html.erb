@@ -8,18 +8,26 @@
 </head>
 <body>
 
+
+
 <div class="container">
+
 
   <div class="header">
     <%= image_tag 'ix.png' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </div>
 
   <%= yield %>
 
   <div class="footer">
-    <%=link_to 'Home', "http://iexperience.co.za" %>
-    | <%=mail_to "aaron@iexperience.co.za", "Contact" %>
-    | <%=link_to 'About', 'http://iexperience.co.za/#row2' %>
+    <% if user_signed_in? %>
+      <%=link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%=link_to 'Sign In', new_user_session_path %>
+    <% end %>
   </div>
 
 </div>

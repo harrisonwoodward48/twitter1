@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
   # get 'tweets' => 'tweets#index'
   # post 'tweets' => 'tweets#create'
   # get 'tweets/new' => 'tweets#new'
 
   resources :tweets, :only => [:index, :create, :new]
 
+  root "tweets#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

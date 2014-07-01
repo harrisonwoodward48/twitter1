@@ -1,4 +1,4 @@
-<h1>Hey!</h1>
+<h1>New Tweet</h1>
 
 <% if @tweet.errors.any? %>
   <div class="errors">
@@ -12,13 +12,13 @@
 
 <%= form_for(@tweet, :url => tweets_path) do |f| %>
 
-  <%= f.label :body %>
-  <%= f.text_field :body %>
+  <%= f.label :body %>:
+  <%= f.text_field :body, :style => 'width:200px;height:20px;font-size:14px;' %>
 
   <br/><br/>
 
-  <%= f.label :user_id %>
-  <%= f.select :user_id, @handles %>
+  <%= f.label :user %>:
+  @<%= current_user.handle %>
 
   <br/><br/>
 

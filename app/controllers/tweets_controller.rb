@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @tweets = Tweet.all
@@ -10,7 +11,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = Tweet.new(tweet_params.merge(:user => current_user))
     if @tweet.save
       redirect_to :action => :index  
     else
